@@ -59,8 +59,6 @@
     mime=video ( video without audio)
     mime=audio ( audio only ) 
     Then you will right click on any file (recommended the largest file size). Select Copy then Copy Url. Finally, open a new browser, paste the copied paragraph and delete from &range onwards. 
-    For example : https://rr1---sn-npoe7nek.c.drive.google.com/videoplayback?expire=1741540955&ei=K6TNZ4e8J56vp84P5oDR8QY&ip=14.231.194.51&id=01683c99c2e038ff&itag=136&source=webdrive&requiressl=yes&xpc=EghonaK1InoBAQ==&met=1741530155,&mh=3C&mm=32,26&mn=sn-npoe7nek,sn-oguelnzr&ms=su,onr&mv=m&mvi=1&pl=23&rms=su,su&sc=yes&ttl=transient&susc=dr&obr=https://drive.google.com&driveid=1whxKtEJMndQGX528Ut_RHnxE6g-ALzAj&app=explorer&eaua=okVpjC1Pk3A&mime=video/mp4&vprv=1&prv=1&rqh=1&gir=yes&clen=18751411&dur=1464.433&lmt=1709909850965142&mt=1741529804&fvip=4&subapp=DRIVE_WEB_FILE_VIEWER&txp=0000224&sparams=expire,ei,ip,id,itag,source,requiressl,xpc,ttl,susc,obr,driveid,app,eaua,mime,vprv,prv,rqh,gir,clen,dur,lmt&sig=AJfQdSswRgIhAPRegWaDI8_6AVzRewGK_hbzPHI6PutJsZdlxRqZ_-BAAiEApshjp8nVQyg2El49pJ5RJjNE0sDINTs_SwmkD4JYaTE=&lsparams=met,mh,mm,mn,ms,mv,mvi,pl,rms,sc&lsig=AFVRHeAwRQIhAMoPlya6tzdV99QNfTyTWgPJY8IQYJdzRFgL8S3YKUcNAiAOh1Iuq7oDYXYa_PWV09bzMpYtuITHWc-WkO-_bVZNiw==&alr=yes&cpn=y_UXF2r7KqcrC99X&c=WEB_EMBEDDED_PLAYER&cver=1.20250304.00.00(&range=0-131954&rn=1&rbuf=0&ump=1&srfvp=1) 
-    YOU MUST REMOVE INSIDE THE BRACKETS
-
+   
 5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
