@@ -1,4 +1,4 @@
-# How-to-download-protected-view-only-fvideiles-from-google-drive??
+# How-to-download-protected-view-only-file-from-google-drive??
 
 1. Open or Preview Any view-only or protected files from google drive.
 
