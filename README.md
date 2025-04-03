@@ -40,6 +40,8 @@
 
 5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
+Bonus or u can use https://chromewebstore.google.com/detail/document-preview-exporter/npapjbliocdhineglcjkmmmaddpgeono 
+
 # How-to-download-protected-view-only-video-from-google-drive??
 
 1. Open or Preview Any view-only or protected files from google drive.
