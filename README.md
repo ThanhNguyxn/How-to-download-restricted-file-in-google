@@ -93,36 +93,6 @@ the following into the console:
 The text will be loaded into the Console itself; copy it by clicking the 
 gray-highlighted "COPY" at the end.
 */
+    [code.txt](https://github.com/user-attachments/files/19820856/code.txt)
 
-function rtcScript() {
-    document.oncontextmenu = null;
-    document.onselectstart = null;
-    document.onmousedown = null;
-    document.onclick = null;
-    document.oncopy = null;
-    document.oncut = null;
-    var elements = document.getElementsByTagName('*');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].oncontextmenu = null;
-        elements[i].onselectstart = null;
-        elements[i].onmousedown = null;
-        elements[i].oncopy = null;
-        elements[i].oncut = null;
-    }
-    function preventShareThis() {
-        document.getSelection = window.getSelection = function() {
-            return {isCollapsed: true};
-        }
-    }
-    var scripts = document.getElementsByTagName('script');
-    for (var i = 0; i < scripts.length; i++) {
-        if (scripts[i].src.indexOf('w.sharethis.com') > -1) {
-            preventShareThis();
-        }
-    }
-    if (typeof Tynt != 'undefined') {
-        Tynt = null;
-    }
-}
-rtcScript();
-setInterval(rtcScript, 2000);
+
