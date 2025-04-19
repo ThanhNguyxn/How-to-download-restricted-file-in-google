@@ -64,3 +64,65 @@ Bonus u can use simpler way https://chromewebstore.google.com/detail/document-pr
    
 5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
+# HHow-to-download-protected-view-only-video-from-google-docs??
+
+The script below isn't the fastest way to copy-and-paste from a protected 
+Google Doc. Before trying it, I'd suggest following MikoFrosty's advice from 
+the comments:
+1) Change the end of the document url from `/edit` to `/mobilebasic`.
+2) Disable Javascript (as described in steps 2 and 3 below).
+3) Keeping the console open, reload the page.
+That should be enough to allow you to copy freely. The script here is 
+*probably* only necessary if the /mobilebasic view isn't rendering something 
+correctly.
+HOW TO USE
+----------
+1) Open the protected Doc using Chrome. Scroll all the way down to the bottom 
+to make sure that it is entirely loaded.
+2) Open Chrome Developer Tools (<Ctrl+Shift+I>), and click "Console" to open 
+the Javascript Console.
+3) Open the Command Console (<Ctrl+Shift+P>). Type "javascript", and select 
+the option "Disable Javascript" when it appears.
+4) Copy the script below into the Javascript console.
+5) Leaving the Javascript Console open, you may now copy-and-paste from the 
+document as normal. (Some formatting may be broken. Closing the console may 
+re-lock copy-and-pasting.)
+6) (OPTIONAL) To copy the entire document as plain text (no formatting), type 
+the following into the console: 
+    document.body.innerText
+The text will be loaded into the Console itself; copy it by clicking the 
+gray-highlighted "COPY" at the end.
+*/
+
+function rtcScript() {
+    document.oncontextmenu = null;
+    document.onselectstart = null;
+    document.onmousedown = null;
+    document.onclick = null;
+    document.oncopy = null;
+    document.oncut = null;
+    var elements = document.getElementsByTagName('*');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oncontextmenu = null;
+        elements[i].onselectstart = null;
+        elements[i].onmousedown = null;
+        elements[i].oncopy = null;
+        elements[i].oncut = null;
+    }
+    function preventShareThis() {
+        document.getSelection = window.getSelection = function() {
+            return {isCollapsed: true};
+        }
+    }
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+        if (scripts[i].src.indexOf('w.sharethis.com') > -1) {
+            preventShareThis();
+        }
+    }
+    if (typeof Tynt != 'undefined') {
+        Tynt = null;
+    }
+}
+rtcScript();
+setInterval(rtcScript, 2000);
