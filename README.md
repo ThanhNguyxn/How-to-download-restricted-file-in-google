@@ -64,7 +64,7 @@ Bonus u can use simpler way https://chromewebstore.google.com/detail/document-pr
    
 5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
-# How-to-download-protected-view-only-video-from-google-docs??
+# How-to-download-protected-view-only-from-google-docs??
 
 The script below isn't the fastest way to copy-and-paste from a protected 
 Google Doc. Before trying it, I'd suggest following MikoFrosty's advice from 
