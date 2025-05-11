@@ -62,25 +62,66 @@ document.body.appendChild(jspdf);
 
 5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
-# How-to-download-protected-view-only-video-from-google-drive??
+## 🎥 Download Video Files
 
-1. Open or Preview Any view-only or protected files from google drive.
+1. **Open the video** in Google Drive
+2. **Open Developer Tools** Network tab (use shortcuts above)
+3. **Disable copy protection** by pasting this code in the Console tab:
+```javascript
+function rtcScript() {
+    document.oncontextmenu = null;
+    document.onselectstart = null;
+    document.onmousedown = null;
+    document.onclick = null;
+    document.oncopy = null;
+    document.oncut = null;
+    var elements = document.getElementsByTagName('*');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oncontextmenu = null;
+        elements[i].onselectstart = null;
+        elements[i].onmousedown = null;
+        elements[i].oncopy = null;
+        elements[i].oncut = null;
+    }
+    function preventShareThis() {
+        document.getSelection = window.getSelection = function() {
+            return {isCollapsed: true};
+        }
+    }
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+        if (scripts[i].src.indexOf('w.sharethis.com') > -1) {
+            preventShareThis();
+        }
+    }
+    if (typeof Tynt != 'undefined') {
+        Tynt = null;
+    }
+}
+rtcScript();
+setInterval(rtcScript, 2000);
+```
 
-2. Open Developer Console.
-    If you are previewing in Google Chrome or Firefox
-    Press Shift + Ctrl + J ( on Windows / Linux) or Option + ⌘  + J (on Mac)
-    If you are previewing in Microsoft Edge 
-    Press Shift + Ctrl + I 
-    If you are previewing in Apple Safari
-    Press Option + ⌘ + C
-    Then you will find yourself inside the developer tools.
-    
-3.  Navigate to the "network" tab.
+4. **In the Network tab:**
+   - Type `mime=video` in the filter box (for video)
+   - Or `mime=audio` (for audio track)
+   - Look for the largest file size
+5. **Get the video URL:**
+   - Right-click the largest file
+   - Select "Copy" → "Copy URL"
+6. **Modify the URL:**
+   - Open a new tab
+   - Paste the URL
+   - ⚠️ Remove everything after `&range=` in the URL
+   Example:
+   ```
+   https://rr1---sn-npoe7nek.c.drive.google.com/videoplayback?expire=1741540955&ei=...
+   ```
+7. The video will start downloading automatically
 
-4.  Search : 
-    mime=video ( video without audio)
-    mime=audio ( audio only ) 
-    Then you will right click on any file (recommended the largest file size). Select Copy then Copy Url. Finally, open a new browser, paste the copied paragraph and delete from &range onwards. 
-   
-5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
+## ⚠️ Important Notes
+
+1. This guide is for educational purposes only. Do not use it to violate copyright laws.
+2. Always respect the rights of content creators and owners.
+3. Use this method responsibly and ethically.
 
