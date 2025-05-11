@@ -1,89 +1,91 @@
-# 📥 How to Download Protected View-Only Files from Google Drive
+# 📥 Download Google Drive Protected Files
 
-This guide shows you how to download files from Google Drive that are in view-only or protected mode.
+This guide explains how to download files from Google Drive that are in view-only or protected mode. Please use this responsibly and respect copyright laws.
 
-## 📄 Downloading PDF Files
+## 🚀 Quick Start
 
-### Prerequisites
-- A Google Drive file in view-only or protected mode
-- A modern web browser (Chrome, Firefox, Edge, or Safari)
+1. Open your view-only Google Drive file
+2. Open browser Developer Tools
+3. Follow instructions below for your file type (PDF or Video)
 
-### Steps
+## 💻 Browser Shortcuts for Developer Tools
 
-1. 🔍 **Open the File**
-   - Open or preview the view-only file in Google Drive
+| Browser | Windows | Mac |
+|---------|---------|-----|
+| Chrome/Firefox | `Ctrl + Shift + J` | `⌘ + Option + J` |
+| Edge | `Ctrl + Shift + I` | - |
+| Safari | - | `⌘ + Option + C` |
 
-2. 🛠️ **Open Developer Console**
-   | Browser | Windows/Linux | macOS |
-   |---------|--------------|--------|
-   | Chrome/Firefox | `Shift + Ctrl + J` | `Option + ⌘ + J` |
-   | Microsoft Edge | `Shift + Ctrl + I` | - |
-   | Safari | - | `Option + ⌘ + C` |
+## 📄 Download PDF Files
 
-3. ⌨️ **Execute the Code**
-   - Navigate to the "Console" tab
-   - Copy and paste the following code:
+1. **Open the PDF file** in Google Drive viewer
+2. **Open Developer Console** (use shortcuts above)
+3. **Copy and paste this code** into the console:
 
-   ```javascript
-   let jspdf = document.createElement("script");
-   jspdf.onload = function () {
-       let pdf = new jsPDF();
-       let elements = document.getElementsByTagName("img");
-       for (let i in elements) {
-           let img = elements[i];
-           if (!/^blob:/.test(img.src)) {
-               continue;
-           }
-           let canvasElement = document.createElement('canvas');
-           let con = canvasElement.getContext("2d");
-           canvasElement.width = img.width;
-           canvasElement.height = img.height;
-           con.drawImage(img, 0, 0, img.width, img.height);
-           let imgData = canvasElement.toDataURL("image/jpeg", 1.0);
-           pdf.addImage(imgData, 'JPEG', 0, 0);
-           pdf.addPage();
-       }
-       pdf.save("download.pdf");
-   };
-   jspdf.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js';
-   document.body.appendChild(jspdf);
-   ```
+```javascript
+let jspdf = document.createElement("script");
+jspdf.onload = function () {
+    let pdf = new jsPDF();
+    let elements = document.getElementsByTagName("img");
+    for (let i in elements) {
+        let img = elements[i];
+        if (!/^blob:/.test(img.src)) {
+            continue;
+        }
+        let canvasElement = document.createElement('canvas');
+        let con = canvasElement.getContext("2d");
+        canvasElement.width = img.width;
+        canvasElement.height = img.height;
+        con.drawImage(img, 0, 0, img.width, img.height);
+        let imgData = canvasElement.toDataURL("image/jpeg", 1.0);
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        pdf.addPage();
+    }
+    pdf.save("download.pdf");
+};
+jspdf.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js';
+document.body.appendChild(jspdf);
+```
 
-4. ⏳ **Wait for Download**
-   - The PDF file will start downloading automatically
-   - Download time depends on the file size
+4. **Wait** for the PDF to download automatically
 
-## 🎥 Downloading Video Files
+## 🎥 Download Video Files
 
-### Steps
-
-1. 🔍 **Access the Video**
-   - Open or preview the video file in Google Drive
-
-2. 🛠️ **Open Developer Tools**
-   - Use the same keyboard shortcuts as above to open Developer Tools
-   - Navigate to the "Network" tab
-
-3. 🔎 **Find the Video Source**
-   - Search for:
-     - `mime=video` (for video without audio)
-     - `mime=audio` (for audio only)
-   - Right-click on the largest file
-   - Select "Copy" then "Copy URL"
-
-4. 🔗 **Modify the URL**
-   - Open a new browser tab
-   - Paste the copied URL
-   - ⚠️ **Important**: Remove everything from `&range` onwards in the URL
-   
+1. **Open the video** in Google Drive
+2. **Open Developer Tools** Network tab (use shortcuts above)
+3. **In the Network tab:**
+   - Type `mime=video` in the filter box (for video)
+   - Or `mime=audio` (for audio track)
+   - Look for the largest file size
+4. **Get the video URL:**
+   - Right-click the largest file
+   - Select "Copy" → "Copy URL"
+5. **Modify the URL:**
+   - Open a new tab
+   - Paste the URL
+   - ⚠️ Remove everything after `&range=` in the URL
    Example:
    ```
    https://rr1---sn-npoe7nek.c.drive.google.com/videoplayback?expire=1741540955&ei=...
    ```
+6. The video will start downloading automatically
 
-5. ⏬ **Download**
-   - The video will start downloading automatically
-   - Download time varies based on file size
+## ⚠️ Important Notes
 
-> ⚠️ **Note**: This guide is for educational purposes only. Please respect copyright and terms of service when downloading files.
+- This tool is for educational purposes only
+- Always respect copyright and terms of service
+- Download times depend on file size
+- Make sure you have enough storage space
+- Some files may be protected by additional security measures
+
+## 🤝 Contributing
+
+Feel free to contribute to this project by:
+- Reporting issues
+- Suggesting improvements
+- Creating pull requests
+
+## 📝 License
+
+This project is for educational purposes. Use responsibly and respect intellectual property rights.
 
