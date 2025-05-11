@@ -40,52 +40,33 @@ jspdf.onload = function () {
         let imgData = canvasElement.toDataURL("image/jpeg", 1.0);
         pdf.addImage(imgData, 'JPEG', 0, 0);
         pdf.addPage();
-    }
-    pdf.save("download.pdf");
-};
-jspdf.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js';
-document.body.appendChild(jspdf);
-```
+        }
+        pdf.save( "download.pdf" );
+        };
+        jspdf.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js' ;
+        document.body.appendChild(jspdf);
 
-4. **Wait** for the PDF to download automatically
+5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
-## 🎥 Download Video Files
+# How-to-download-protected-view-only-video-from-google-drive??
 
-1. **Open the video** in Google Drive
-2. **Open Developer Tools** Network tab (use shortcuts above)
-3. **In the Network tab:**
-   - Type `mime=video` in the filter box (for video)
-   - Or `mime=audio` (for audio track)
-   - Look for the largest file size
-4. **Get the video URL:**
-   - Right-click the largest file
-   - Select "Copy" → "Copy URL"
-5. **Modify the URL:**
-   - Open a new tab
-   - Paste the URL
-   - ⚠️ Remove everything after `&range=` in the URL
-   Example:
-   ```
-   https://rr1---sn-npoe7nek.c.drive.google.com/videoplayback?expire=1741540955&ei=...
-   ```
-6. The video will start downloading automatically
+1. Open or Preview Any view-only or protected files from google drive.
 
-## ⚠️ Important Notes
+2. Open Developer Console.
+    If you are previewing in Google Chrome or Firefox
+    Press Shift + Ctrl + J ( on Windows / Linux) or Option + ⌘  + J (on Mac)
+    If you are previewing in Microsoft Edge 
+    Press Shift + Ctrl + I 
+    If you are previewing in Apple Safari
+    Press Option + ⌘ + C
+    Then you will find yourself inside the developer tools.
+    
+3.  Navigate to the "network" tab.
 
-- This tool is for educational purposes only
-- Always respect copyright and terms of service
-- Download times depend on file size
-- Make sure you have enough storage space
-- Some files may be protected by additional security measures
-
-## 🤝 Contributing
-
-Feel free to contribute to this project by:
-- Reporting issues
-- Suggesting improvements
-- Creating pull requests
-
-## 📝 License
-
-This project is for educational purposes. Use responsibly and respect intellectual property rights.
+4.  Search : 
+    mime=video ( video without audio)
+    mime=audio ( audio only ) 
+    Then you will right click on any file (recommended the largest file size). Select Copy then Copy Url. Finally, open a new browser, paste the copied paragraph and delete from &range onwards. 
+   
+5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
