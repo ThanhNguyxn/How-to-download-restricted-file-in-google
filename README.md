@@ -23,28 +23,42 @@ This guide explains how to download files from Google Drive that are in view-onl
 3. **Copy and paste this code** into the console:
 
 ```javascript
+// Add jsPDF library to document
 let jspdf = document.createElement("script");
 jspdf.onload = function () {
-    let pdf = new jsPDF();
-    let elements = document.getElementsByTagName("img");
-    for (let i in elements) {
-        let img = elements[i];
-        if (!/^blob:/.test(img.src)) {
-            continue;
-        }
-        let canvasElement = document.createElement('canvas');
-        let con = canvasElement.getContext("2d");
-        canvasElement.width = img.width;
-        canvasElement.height = img.height;
-        con.drawImage(img, 0, 0, img.width, img.height);
-        let imgData = canvasElement.toDataURL("image/jpeg", 1.0);
-        pdf.addImage(imgData, 'JPEG', 0, 0);
-        pdf.addPage();
-        }
-        pdf.save( "download.pdf" );
-        };
-        jspdf.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js' ;
-        document.body.appendChild(jspdf);
+   // Create new PDF document
+   let pdf = new jsPDF();
+   
+   // Get all images from the document
+   let elements = document.getElementsByTagName("img");
+   
+   // Process each image
+   for (let i in elements) {
+      let img = elements[i];
+      if (!/^blob:/.test(img.src)) {
+         continue;
+      }
+      
+      // Create canvas and draw image
+      let canvasElement = document.createElement('canvas');
+      let con = canvasElement.getContext("2d");
+      canvasElement.width = img.width;
+      canvasElement.height = img.height;
+      con.drawImage(img, 0, 0, img.width, img.height);
+      
+      // Convert to JPEG and add to PDF
+      let imgData = canvasElement.toDataURL("image/jpeg", 1.0);
+      pdf.addImage(imgData, 'JPEG', 0, 0);
+      pdf.addPage();
+   }
+   
+   // Save the PDF file
+   pdf.save("download.pdf");
+};
+jspdf.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js';
+document.body.appendChild(jspdf);
+```
+4. **Wait for Download** - The PDF will start downloading automatically
 
 5. Now, the pdf file start to download. This might take a few minutes depending on the file size.
 
